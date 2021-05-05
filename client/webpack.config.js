@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 __webpack_base_uri__ = 'http://localhost:8080';
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './assets/index.html',
             filename: '../index.html'
-        })
+        }),
+        new CleanWebpackPlugin()
     ]
 };
