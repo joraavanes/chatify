@@ -7,8 +7,8 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output:{
-        path: path.join(__dirname, 'public', 'js'),
-        filename: 'bundle.[hash].js'
+        path: path.join(__dirname, '../', 'public', 'js'),
+        filename: 'bundle.[contenthash].js'
     },
     module:{
         rules:[
