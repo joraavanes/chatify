@@ -12,7 +12,7 @@ const Chat = () => {
         socket = new SocketIO();
 
         const userInfo = qs.parse(location.search.slice(1));
-        socket.emit('newUser', userInfo);
+        socket.emit('join', userInfo);
 
         return () => {
             socket.disconnect();

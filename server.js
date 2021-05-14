@@ -16,6 +16,10 @@ app.use((req, res, next) => {
 io.on('connection', socket => {
     console.log('A user has connected');
 
+    socket.on('join', data => {
+        console.log(socket.id, data);
+    });
+
     socket.on('disconnect', reason => {
         console.log('A user has just left');
     });
