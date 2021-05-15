@@ -4,7 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^6.1.0",
     "express": "^4.17.1",
     "socket.io": "^3.1.2"
+  },
+  "scripts": {
+    "server": "nodemon server.js",
+    "webpack": "npm run webpack:dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run webpack\""
   }
 }
