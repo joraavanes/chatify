@@ -14,7 +14,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket = new SocketIO();
-
+        console.log(socket);
         const userInfo = qs.parse(location.search.slice(1));
         setUserInfo(userInfo);
 
@@ -39,8 +39,11 @@ const Chat = () => {
     return (
         <div>
             {messages && messages.map(data => (
-                <p key={data.message}>{data.message}</p>
+                <p key={data.message}><b>{data.name}</b> says: {data.message}</p>
             ))}
+            {socket &&
+                <MessageForm socket={socket}/>
+            }
         </div>
     )
 }
