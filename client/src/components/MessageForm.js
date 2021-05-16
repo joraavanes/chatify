@@ -6,8 +6,9 @@ const MessageForm = ({socket}) => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        console.log(socket);
+        
         socket.emit('userMessage', {message});
+        setMessage('');
     }
 
     return (

@@ -14,7 +14,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket = new SocketIO();
-        console.log(socket);
+        
         const userInfo = qs.parse(location.search.slice(1));
         setUserInfo(userInfo);
 
