@@ -3,11 +3,16 @@ import React, { useState } from 'react'
 const MessageForm = ({socket}) => {
 
     const [message, setMessage] = useState('');
+    const [delivered, setDelivered] = useState(false);
 
     const handleFormSubmit = e => {
         e.preventDefault();
         
-        socket.emit('userMessage', {message});
+        socket.emit('userMessage', {message}, (err, deliverMsg) => {
+            if(!err){
+                // Todo: give the user delivery notification
+            }
+        });
         setMessage('');
     }
 
