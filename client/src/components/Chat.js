@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import SocketIO from 'socket.io-client'
 import qs from 'querystring'
+import MessageForm from './MessageForm';
 
 let socket;
 
@@ -21,9 +22,8 @@ const Chat = () => {
         socket.emit('join', userInfo);
 
         // Listens the message event from others
-        socket.on('message', msgStr => {
-            // const newMessages = messages.concat(msgStr);
-            setMessages(arr => [...arr, msgStr]);
+        socket.on('message', data => {
+            setMessages(arr => [...arr, data]);
         });
 
         return () => {
@@ -38,8 +38,8 @@ const Chat = () => {
 
     return (
         <div>
-            {messages && messages.map(message => (
-                <p>{message}</p>
+            {messages && messages.map(data => (
+                <p key={data.message}>{data.message}</p>
             ))}
         </div>
     )
