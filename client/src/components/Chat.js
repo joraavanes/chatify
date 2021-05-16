@@ -19,7 +19,8 @@ const Chat = () => {
         // Listens the message event from others
         socket.on('message', msgStr => {
             console.log(msgStr);
-            setMessages([...messages, msgStr]);
+            // const newMessages = messages.concat(msgStr);
+            setMessages(arr => [...arr, msgStr]);
         });
 
         return () => {
@@ -34,7 +35,12 @@ const Chat = () => {
 
     return (
         <div>
-            Chat
+            {messages && messages.map(message => (
+                <p>{message}</p>
+            ))}
+            {/* <pre>
+                {messages}
+            </pre> */}
         </div>
     )
 }
