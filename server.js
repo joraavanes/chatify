@@ -15,20 +15,18 @@ app.use((req, res, next) => {
 });
 
 io.on('connection', socket => {
-    console.log('A user has connected');
 
     socket.on('join', ({name, room}) => {
-        console.log(socket.id, name, room);
         addUser({id: socket.id, name, room});
 
+        socket.emit('message', `Welcome ${name}`);
         socket.broadcast.to(room).emit('message', `A new friend has joined, Welcome ${name}`);
         socket.join(room);
-
     });
 
     socket.on('disconnect', reason => {
-        console.log('A user has just left');
-        removeUser(socket.id);
+        const {name, room} = removeUser(socket.id);
+        socket.broadcast.to(room).emit('message', `${name} has left the room`);
     });
 });
 
