@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const { addUser, removeUser, getUser } = require('./helpers/user');
+const { addUser, removeUser, getUser, getCurrentUsersInRoom } = require('./helpers/user');
 
 const app = require('express')();
 const httpServer = require('http').createServer(app);
@@ -22,6 +22,10 @@ io.on('connection', socket => {
         socket.emit('message', {name: 'admin', message: `Welcome ${name}`});
         socket.broadcast.to(room).emit('message', {name: 'admin', message: `A new friend has joined, Welcome ${name}`});
         socket.join(room);
+
+        const usersInRoom = getCurrentUsersInRoom(room);
+        socket.emit('roomData', {users: usersInRoom});
+        socket.broadcast.to(room).emit('roomData', {users: usersInRoom});
     });
 
     socket.on('userMessage', ({message}, callback) => {
@@ -35,6 +39,9 @@ io.on('connection', socket => {
     socket.on('disconnect', reason => {
         const {name, room} = removeUser(socket.id);
         socket.broadcast.to(room).emit('message', {name: 'admin', message: `${name} has left the room`});
+
+        const usersInRoom = getCurrentUsersInRoom(room);
+        socket.broadcast.to(room).emit('roomData', {users: usersInRoom});
     });
 });
 

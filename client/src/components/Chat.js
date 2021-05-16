@@ -10,6 +10,7 @@ const Chat = () => {
     const location = useLocation();
 
     const [userInfo, setUserInfo] = useState({});
+    const [roomData, setRoomData] = useState({});
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
@@ -26,15 +27,19 @@ const Chat = () => {
             setMessages(arr => [...arr, data]);
         });
 
+        socket.on('roomData', data => {
+            setRoomData(data);
+        });
+
         return () => {
             socket.disconnect();
         }
     }, [location.search]);
 
     useEffect(() => {
+        console.log(roomData);
 
-
-    }, [messages]);
+    }, [roomData]);
 
     return (
         <div>
