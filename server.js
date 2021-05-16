@@ -19,20 +19,20 @@ io.on('connection', socket => {
     socket.on('join', ({name, room}) => {
         addUser({id: socket.id, name, room});
 
-        socket.emit('message', {message: `Welcome ${name}`});
-        socket.broadcast.to(room).emit('message', {message: `A new friend has joined, Welcome ${name}`});
+        socket.emit('message', {name: 'admin', message: `Welcome ${name}`});
+        socket.broadcast.to(room).emit('message', {name: 'admin', message: `A new friend has joined, Welcome ${name}`});
         socket.join(room);
     });
 
-    socket.on('userMessage', ({id, message}) => {
-        console.log(socket.id);
-        const user = getUser(socket.id);
-        socket.broadcast.to(room).emit('message', {user, message});
+    socket.on('userMessage', ({message}) => {
+        const {name, room} = getUser(socket.id);
+        socket.emit('message', {name, message});
+        socket.broadcast.to(room).emit('message', {name, message});
     });
 
     socket.on('disconnect', reason => {
         const {name, room} = removeUser(socket.id);
-        socket.broadcast.to(room).emit('message', {message: `${name} has left the room`});
+        socket.broadcast.to(room).emit('message', {name: 'admin', message: `${name} has left the room`});
     });
 });
 
