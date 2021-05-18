@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import SocketIO from 'socket.io-client'
 import qs from 'querystring'
 import MessageForm from './MessageForm';
+import Sidebar from './Sidebar';
 
 let socket;
 
@@ -33,6 +34,7 @@ const Chat = () => {
 
         return () => {
             socket.disconnect();
+            socket.off();
         }
     }, [location.search]);
 
@@ -43,6 +45,7 @@ const Chat = () => {
 
     return (
         <div>
+            <Sidebar roomData={roomData}/>
             {messages && messages.map(data => (
                 <p key={data.message}><b>{data.name}</b> says: {data.message}</p>
             ))}
