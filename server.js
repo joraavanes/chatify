@@ -23,9 +23,9 @@ io.on('connection', socket => {
         socket.broadcast.to(room).emit('message', {name: 'admin', message: `A new friend has joined, Welcome ${name}`});
         socket.join(room);
 
-        const usersInRoom = getCurrentUsersInRoom(room);
-        socket.emit('roomData', {users: usersInRoom});
-        socket.broadcast.to(room).emit('roomData', {users: usersInRoom});
+        const roomData = getCurrentUsersInRoom(room);
+        socket.emit('roomData', roomData);
+        socket.broadcast.to(room).emit('roomData', roomData);
     });
 
     socket.on('userMessage', ({message}, callback) => {
@@ -40,8 +40,8 @@ io.on('connection', socket => {
         const {name, room} = removeUser(socket.id);
         socket.broadcast.to(room).emit('message', {name: 'admin', message: `${name} has left the room`});
 
-        const usersInRoom = getCurrentUsersInRoom(room);
-        socket.broadcast.to(room).emit('roomData', {users: usersInRoom});
+        const roomData = getCurrentUsersInRoom(room);
+        socket.broadcast.to(room).emit('roomData', roomData);
     });
 });
 
