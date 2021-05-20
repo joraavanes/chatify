@@ -1,4 +1,20 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
+import Container from './styled/Container.styled'
+
+const SubmitButton = styled.input.attrs({
+    type: 'submit',
+    value: 'Send'
+})`
+    width: 100%;
+    height: 40px;
+    background-color: ${(props) => props.backgroundColor};
+    color: #fff;
+    font-weight: bold;
+    border:none;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+`;
 
 const MessageForm = ({socket}) => {
 
@@ -19,14 +35,17 @@ const MessageForm = ({socket}) => {
     return (
         <div>
             <form noValidate onSubmit={handleFormSubmit}>
-                <input 
-                    type="text" 
-                    name="message" 
-                    id="message" 
-                    value={message} 
-                    onChange={e => setMessage(e.target.value)}
-                    />
-                <input type="submit" value="Send"/>
+                <Container width="80">
+                    <input 
+                        type="text" 
+                        name="message" 
+                        id="message" 
+                        value={message} 
+                        onChange={e => setMessage(e.target.value)}
+                        />
+                    {/* <input type="submit" value="Send"/> */}
+                    <SubmitButton backgroundColor="dodgerblue"/>
+                </Container>
             </form>
         </div>
     )
