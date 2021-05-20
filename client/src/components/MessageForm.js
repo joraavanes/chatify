@@ -10,6 +10,8 @@ const MessageForm = ({socket}) => {
     const handleFormSubmit = e => {
         e.preventDefault();
         
+        if(message.trim().length == 0) return;
+
         socket.emit('userMessage', {message}, (err, deliverMsg) => {
             if(!err){
                 // Todo: give the user delivery notification
@@ -28,6 +30,7 @@ const MessageForm = ({socket}) => {
                         id="message" 
                         value={message} 
                         onChange={e => setMessage(e.target.value)}
+                        autoComplete="off"
                         />
                     {/* <input type="submit" value="Send"/> */}
                     <SubmitButton backgroundColor="dodgerblue"/>

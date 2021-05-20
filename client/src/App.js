@@ -5,7 +5,7 @@ import Join from './components/Join'
 
 const App = () => {
     return (
-        <div>
+        <>
             <h1>Chatify</h1>
             <Router>
                 <NavLink to="/">Join</NavLink>
@@ -16,7 +16,7 @@ const App = () => {
                     <Route path="/chat" component={Chat} exact/>
                 </Switch>
             </Router>
-        </div>
+        </>
     );
 };
 
