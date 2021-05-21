@@ -37,11 +37,14 @@ io.on('connection', socket => {
     });
 
     socket.on('disconnect', reason => {
-        const {name, room} = removeUser(socket.id);
-        socket.broadcast.to(room).emit('message', {name: 'admin', message: `${name} has left the room`});
+        const user = removeUser(socket.id);
+        
+        if(!user) return;
 
-        const roomData = getCurrentUsersInRoom(room);
-        socket.broadcast.to(room).emit('roomData', roomData);
+        socket.broadcast.to(user.room).emit('message', {name: 'admin', message: `${user.name} has left the room`});
+
+        const roomData = getCurrentUsersInRoom(user.room);
+        socket.broadcast.to(user.room).emit('roomData', roomData);
     });
 });
 
