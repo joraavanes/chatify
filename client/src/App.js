@@ -2,15 +2,13 @@ import React from 'react'
 import { Switch, BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Chat from './components/Chat'
 import Join from './components/Join'
+import H1 from './components/styled/h1.styled'
 
 const App = () => {
     return (
         <>
-            <h1>Chatify</h1>
+            <H1>Chatify</H1>
             <Router>
-                <NavLink to="/">Join</NavLink>
-                <br/>
-                <NavLink to="/chat">Chat</NavLink>
                 <Switch>
                     <Route path="/" component={Join} exact/>
                     <Route path="/chat" component={Chat} exact/>
