@@ -34,12 +34,12 @@ const Join = () => {
                         <Container justifyContent="space-around" alignItems="center">
                             <label htmlFor="name">Name</label>
                             {/* <input type="text" name="name" id="name" onChange={e => setName(e.target.value)}/> */}
-                            <JoinInput onChange={e => setName(e.target.value)}/>
+                            <JoinInput name="name" id="name" autoComplete="off" onChange={e => setName(e.target.value)}/>
                         </Container>
                         <Container justifyContent="space-around" alignItems="center">
                             <label htmlFor="room">Room</label>
                             {/* <input type="text" name="room" id="room" onChange={e => setRoom(e.target.value)}/> */}
-                            <JoinInput onChange={e => setRoom(e.target.value)}/>
+                            <JoinInput name="room" id="room" autoComplete="off" onChange={e => setRoom(e.target.value)}/>
                         </Container>
                         {/* <button type="submit">Submit</button> */}
                         <JoinButton>Join</JoinButton>
