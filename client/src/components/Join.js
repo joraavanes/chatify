@@ -24,18 +24,18 @@ const Join = () => {
             <H1>
                 Join a chat room
             </H1>
-            <Container>
+            <Container justifyContent="center">
                 <form onSubmit={handleFormSubmit}>
                     <FormBox>
                         <div>
                             <label htmlFor="name">Name</label>
                             {/* <input type="text" name="name" id="name" onChange={e => setName(e.target.value)}/> */}
-                            <JoinInput/>
+                            <JoinInput onChange={e => setName(e.target.value)}/>
                         </div>
                         <div>
                             <label htmlFor="room">Room</label>
                             {/* <input type="text" name="room" id="room" onChange={e => setRoom(e.target.value)}/> */}
-                            <JoinInput/>
+                            <JoinInput onChange={e => setRoom(e.target.value)}/>
                         </div>
                         {/* <button type="submit">Submit</button> */}
                         <JoinButton>Join</JoinButton>

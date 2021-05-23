@@ -46,7 +46,7 @@ const Chat = () => {
     }, [roomData]);
 
     return (
-        <Container width="80">
+        <Container width="80" justifyContent="space-around">
             <Sidebar roomData={roomData}/>
             <VerticalContainer>
                 <div>

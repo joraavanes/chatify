@@ -23,7 +23,7 @@ const MessageForm = ({socket}) => {
     return (
         <div style={{padding: 10}}>
             <form noValidate onSubmit={handleFormSubmit}>
-                <Container width="80">
+                <Container width="80" justifyContent="space-around">
                     <input 
                         type="text" 
                         name="message" 

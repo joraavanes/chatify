@@ -7,4 +7,9 @@ export default styled.input.attrs({
     border: 1px solid #eaeaea;
     padding: 5px;
     border-radius:5px;
+
+    &:focus{
+        border-color: #666;
+        outline: none;
+    }
 `;

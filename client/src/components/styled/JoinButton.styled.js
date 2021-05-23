@@ -12,4 +12,13 @@ export default styled.button.attrs({
     width: 100%;
     font-weight: bold;
     padding: 10px;
+    cursor: pointer;
+    transition: box-shadow ease-in-out .7s;
+
+    &:hover{
+        box-shadow: 0 0 3px 4px #ccc;
+    }
+    &:active{
+        background-color:#8875ff;
+    }
 `;
