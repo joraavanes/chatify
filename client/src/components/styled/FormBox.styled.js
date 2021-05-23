@@ -7,4 +7,9 @@ export default styled.div`
     border-radius: 5px;
     box-shadow: 0 0 3px 6px #eaeaea;
     color: #666;
+    width: ${props => props.width};
+
+    @media (max-width: 767px){
+        width: 50vw;
+    }
 `;

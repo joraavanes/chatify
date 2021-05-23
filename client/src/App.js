@@ -7,7 +7,6 @@ import H1 from './components/styled/h1.styled'
 const App = () => {
     return (
         <>
-            <H1>Chatify</H1>
             <Router>
                 <Switch>
                     <Route path="/" component={Join} exact/>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Container from './styled/Container.styled'
+import VerticalContainer from './styled/VerticalContainer.styled'
 import H1 from './styled/h1.styled'
 import FormBox from './styled/FormBox.styled'
 import JoinInput from './styled/JoinInput.styled'
@@ -21,22 +22,25 @@ const Join = () => {
 
     return (
         <div>
-            <H1>
-                Join a chat room
-            </H1>
+            <Container justifyContent="center">
+                <H1>Chatify</H1>
+            </Container>
             <Container justifyContent="center">
                 <form onSubmit={handleFormSubmit}>
-                    <FormBox>
-                        <div>
+                    <FormBox width="25vw">
+                        <h2>
+                            Join a chat room
+                        </h2>
+                        <Container justifyContent="space-around" alignItems="center">
                             <label htmlFor="name">Name</label>
                             {/* <input type="text" name="name" id="name" onChange={e => setName(e.target.value)}/> */}
                             <JoinInput onChange={e => setName(e.target.value)}/>
-                        </div>
-                        <div>
+                        </Container>
+                        <Container justifyContent="space-around" alignItems="center">
                             <label htmlFor="room">Room</label>
                             {/* <input type="text" name="room" id="room" onChange={e => setRoom(e.target.value)}/> */}
                             <JoinInput onChange={e => setRoom(e.target.value)}/>
-                        </div>
+                        </Container>
                         {/* <button type="submit">Submit</button> */}
                         <JoinButton>Join</JoinButton>
                     </FormBox>

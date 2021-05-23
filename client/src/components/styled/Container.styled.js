@@ -5,4 +5,5 @@ export default styled.div`
     flex-direction: row;
     justify-content: ${props => props.justifyContent};
     width: ${props => props.width};
+    align-items: ${props => props.alignItems};
 `;
