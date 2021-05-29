@@ -4,6 +4,6 @@ export default styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80vh;
+    height: ${props => props.height ? props.height : `80vh`};
     width: 80vw;
 `;

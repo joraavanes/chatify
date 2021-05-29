@@ -46,9 +46,9 @@ const Chat = () => {
     }, [roomData]);
 
     return (
-        <Container width="80" justifyContent="space-around">
+        <Container width="100%" height="100vh" justifyContent="space-around">
             <Sidebar roomData={roomData}/>
-            <VerticalContainer>
+            <VerticalContainer height="100vh">
                 <div>
                     {messages && messages.map(data => (
                         <p key={data.message}><b>{data.name}</b> says: {data.message}</p>
