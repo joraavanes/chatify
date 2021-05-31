@@ -6,6 +6,7 @@ import MessageForm from './MessageForm';
 import Sidebar from './Sidebar';
 import Container from './styled/Container.styled'
 import VerticalContainer from './styled/VerticalContainer.styled'
+import Messages from './Messages';
 
 let socket;
 
@@ -48,12 +49,13 @@ const Chat = () => {
     return (
         <Container width="100%" height="100vh" justifyContent="space-around">
             <Sidebar roomData={roomData}/>
-            <VerticalContainer height="100vh">
-                <div>
+            <VerticalContainer width="80vw" height="100vh">
+                {/* <div>
                     {messages && messages.map(data => (
                         <p key={data.message}><b>{data.name}</b> says: {data.message}</p>
                     ))}
-                </div>
+                </div> */}
+                <Messages messages={messages}/>
                 {socket &&
                     <MessageForm socket={socket}/>
                 }

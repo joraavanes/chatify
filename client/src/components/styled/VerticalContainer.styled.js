@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export default styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding: ${props => props.padding};
+    justify-content: ${props => props.justifyContent ? props.justifyContent : 'space-between'};
     height: ${props => props.height ? props.height : `80vh`};
-    width: 80vw;
+    width: ${props => props.width};
+    padding: ${props => props.padding};
 `;
