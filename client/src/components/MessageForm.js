@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Container from './styled/Container.styled'
+import MessageInput from './styled/MessageInput.styled'
 import SubmitButton from './styled/SubmitButton.styled'
 
 const MessageForm = ({socket}) => {
@@ -21,11 +22,10 @@ const MessageForm = ({socket}) => {
     }
 
     return (
-        <div style={{padding: 10}}>
-            <form noValidate onSubmit={handleFormSubmit}>
-                <Container width="80" justifyContent="space-around">
-                    <input 
-                        type="text" 
+        <Container borderTop="1px solid #ddd" padding="10px">
+            <form noValidate onSubmit={handleFormSubmit} style={{width: '100%'}}>
+                <Container justifyContent="space-around">
+                    <MessageInput
                         name="message" 
                         id="message" 
                         value={message} 
@@ -36,7 +36,7 @@ const MessageForm = ({socket}) => {
                     <SubmitButton backgroundColor="dodgerblue"/>
                 </Container>
             </form>
-        </div>
+        </Container>
     )
 }
 
