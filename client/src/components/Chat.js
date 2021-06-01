@@ -42,7 +42,7 @@ const Chat = () => {
     }, [location.search]);
 
     useEffect(() => {
-        console.log(roomData);
+        
 
     }, [roomData]);
 

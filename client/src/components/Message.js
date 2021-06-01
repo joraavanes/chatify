@@ -1,8 +1,6 @@
 import React from 'react'
 
 const Message = ({data}) => {
-    console.log(data);
-
     return (
         <div>
             <span>

@@ -4,8 +4,6 @@ const Sidebar = ({roomData}) => {
 
     useEffect(() => {
         
-        console.log(roomData);
-
         return () => {
             
         }
