@@ -33,7 +33,7 @@ const MessageForm = ({socket}) => {
                         autoComplete="off"
                         />
                     {/* <input type="submit" value="Send"/> */}
-                    <SubmitButton backgroundColor="dodgerblue"/>
+                    <SubmitButton backgroundColor="#7e7ff3"/>
                 </Container>
             </form>
         </Container>

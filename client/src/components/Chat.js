@@ -50,11 +50,6 @@ const Chat = () => {
         <Container height="100vh" justifyContent="space-around">
             <Sidebar roomData={roomData}/>
             <VerticalContainer width="80vw" height="100vh">
-                {/* <div>
-                    {messages && messages.map(data => (
-                        <p key={data.message}><b>{data.name}</b> says: {data.message}</p>
-                    ))}
-                </div> */}
                 <Messages messages={messages}/>
                 {socket &&
                     <MessageForm socket={socket}/>

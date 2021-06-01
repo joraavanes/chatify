@@ -10,7 +10,12 @@ export default styled.input.attrs({
     color: #fff;
     font-weight: bold;
     border:none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-family: Cabin,Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
+
+    &:hover{
+        background-color: #5758f5;
+        cursor: pointer;
+    }
 `;
