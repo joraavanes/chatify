@@ -49,7 +49,7 @@ const Chat = () => {
     return (
         <Container height="100vh" justifyContent="space-around">
             <Sidebar roomData={roomData}/>
-            <VerticalContainer width="80vw" height="100vh">
+            <VerticalContainer width="80vw" height="100vh" overflow="hidden">
                 <Messages messages={messages}/>
                 {socket &&
                     <MessageForm socket={socket}/>

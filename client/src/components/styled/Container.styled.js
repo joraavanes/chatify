@@ -9,4 +9,5 @@ export default styled.div`
     height: ${props => props.height};
     border-top: ${props => props.borderTop};
     padding: ${props => props.padding};
+    background-color: ${props => props.backgroundColor ? props.backgroundColor : '#fff'};
 `;

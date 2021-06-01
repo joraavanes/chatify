@@ -8,4 +8,6 @@ export default styled.div`
     height: ${props => props.height ? props.height : `80vh`};
     width: ${props => props.width};
     padding: ${props => props.padding};
+    overflow: ${props => props.overflow};
+    overflow-y: ${props => props.overflowY};
 `;
