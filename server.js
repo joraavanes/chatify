@@ -30,7 +30,7 @@ io.on('connection', socket => {
 
     socket.on('userMessage', ({message}, callback) => {
         const {name, room} = getUser(socket.id);
-        socket.emit('message', {name, message});
+        socket.emit('message', {name, message, currentUser: true});
         socket.broadcast.to(room).emit('message', {name, message});
 
         callback(undefined, 'Delivered');
