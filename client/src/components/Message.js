@@ -4,11 +4,9 @@ import Container from './styled/Container.styled'
 
 const Message = ({data}) => {
     return (
-        <Container justifyContent="flex-start" alignItems="center">
-            <b>
-                {data.name}
-            </b>
-            <TextBubbleStyled>
+        <Container justifyContent="flex-start" alignItems="center" alignRight={data.currentUser}>
+            {!data.currentUser && <b>{data.name}</b>}
+            <TextBubbleStyled backgroundColor={data.currentUser}>
                 {data.message}
             </TextBubbleStyled>
         </Container>

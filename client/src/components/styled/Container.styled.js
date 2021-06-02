@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${props => props.alignRight ? 'row-reverse' : 'row'};
     justify-content: ${props => props.justifyContent};
     align-items: ${props => props.alignItems};
     width: ${props => props.width};
