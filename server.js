@@ -45,7 +45,8 @@ io.on('connection', socket => {
         
         if(!user) return;
 
-        socket.broadcast.to(user.room).emit('message', {name: 'admin', message: `${user.name} has left the room`});
+        const messageId = v4();
+        socket.broadcast.to(user.room).emit('message', {messageId, name: 'admin', message: `${user.name} has left the room`});
 
         const roomData = getCurrentUsersInRoom(user.room);
         socket.broadcast.to(user.room).emit('roomData', roomData);
