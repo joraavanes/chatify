@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react'
+import UserInfo from './styled/UserInfo.styled';
+import VerticalContainer from './styled/VerticalContainer.styled'
 
 const Sidebar = ({roomData}) => {
 
@@ -10,12 +12,14 @@ const Sidebar = ({roomData}) => {
     }, [roomData]);
 
     return (
-        <div style={{border: '1px solid #ccc', width: '20vw'}}>
+        <VerticalContainer width="20vw" height="100vh" justifyContent="flex-start" backgroundColor="#8f91f5">
             <h3>{roomData.room} <span>{roomData.users && roomData.users.length} roommate(s)</span></h3>
             {roomData.users && roomData.users.map(user => (
-                <p key={user.id}>{user.name}</p>
+                <UserInfo key={user.id}>
+                    <span>{user.name}</span>
+                </UserInfo>
             ))}
-        </div>
+        </VerticalContainer>
     );
 }
 
