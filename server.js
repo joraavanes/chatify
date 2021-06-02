@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const { v4 } = require('uuid');
 const { addUser, removeUser, getUser, getCurrentUsersInRoom } = require('./helpers/user');
 
 const app = require('express')();
@@ -19,8 +20,9 @@ io.on('connection', socket => {
     socket.on('join', ({name, room}) => {
         addUser({id: socket.id, name, room});
 
-        socket.emit('message', {name: 'admin', message: `Welcome ${name}`});
-        socket.broadcast.to(room).emit('message', {name: 'admin', message: `A new friend has joined, Welcome ${name}`});
+        const messageId = v4();
+        socket.emit('message', {messageId, name: 'admin', message: `Welcome ${name}`});
+        socket.broadcast.to(room).emit('message', {messageId, name: 'admin', message: `A new friend has joined, Welcome ${name}`});
         socket.join(room);
 
         const roomData = getCurrentUsersInRoom(room);
@@ -30,8 +32,10 @@ io.on('connection', socket => {
 
     socket.on('userMessage', ({message}, callback) => {
         const {name, room} = getUser(socket.id);
-        socket.emit('message', {name, message, currentUser: true});
-        socket.broadcast.to(room).emit('message', {name, message});
+
+        const messageId = v4();
+        socket.emit('message', {messageId, name, message, currentUser: true});
+        socket.broadcast.to(room).emit('message', {messageId, name, message});
 
         callback(undefined, 'Delivered');
     });
