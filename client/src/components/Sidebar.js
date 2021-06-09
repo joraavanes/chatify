@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import RoomInfo from './styled/RoomInfo.styled';
 import UserInfo from './styled/UserInfo.styled';
 import VerticalContainer from './styled/VerticalContainer.styled'
+import QuitButton from './styled/QuitButton.styled';
 
 const Sidebar = ({roomData}) => {
     const history = useHistory();
@@ -28,7 +29,7 @@ const Sidebar = ({roomData}) => {
                     <span>{user.name}</span>
                 </UserInfo>
             ))}
-            <button onClick={handleQuit}>Quit</button>
+            <QuitButton onClick={handleQuit}>Quit</QuitButton>
         </VerticalContainer>
     );
 }
