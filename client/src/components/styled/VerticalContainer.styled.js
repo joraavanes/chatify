@@ -11,4 +11,5 @@ export default styled.div`
     padding: ${props => props.padding};
     overflow: ${props => props.overflow};
     overflow-y: ${props => props.overflowY};
+    box-shadow: ${props => props.boxShadow};
 `;
