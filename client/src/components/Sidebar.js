@@ -1,9 +1,12 @@
 import React, {useEffect} from 'react'
+import { useHistory } from 'react-router-dom';
 import RoomInfo from './styled/RoomInfo.styled';
 import UserInfo from './styled/UserInfo.styled';
 import VerticalContainer from './styled/VerticalContainer.styled'
 
 const Sidebar = ({roomData}) => {
+    const history = useHistory();
+
 
     useEffect(() => {
         
@@ -11,6 +14,8 @@ const Sidebar = ({roomData}) => {
             
         }
     }, [roomData]);
+
+    const handleQuit = e => history.push('/');
 
     return (
         <VerticalContainer width="20vw" height="100vh" justifyContent="flex-start" backgroundColor="#8f91f5" boxShadow="10px 0 30px -9px #ccc">
@@ -23,6 +28,7 @@ const Sidebar = ({roomData}) => {
                     <span>{user.name}</span>
                 </UserInfo>
             ))}
+            <button onClick={handleQuit}>Quit</button>
         </VerticalContainer>
     );
 }
