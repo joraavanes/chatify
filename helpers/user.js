@@ -28,11 +28,20 @@ const getCurrentUsersInRoom = room => {
         room
     };
 };
+
 const getUser = id => users.find(user => user.id == id);
+
+const getOtherRooms = currentRoom => {
+    const rooms = users.map(user => user.room);
+    let uniqueRooms = new Set([...rooms]);
+    uniqueRooms = Array.from(uniqueRooms);
+    return uniqueRooms.filter(room => room !== currentRoom);
+};
 
 module.exports = {
     addUser,
     removeUser,
     getCurrentUsersInRoom,
-    getUser
+    getUser,
+    getOtherRooms
 };
