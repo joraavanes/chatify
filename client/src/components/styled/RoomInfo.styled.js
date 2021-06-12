@@ -11,5 +11,6 @@ export default styled.div`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding: 0 0 4px;
-    margin: 0 0 8px;
+    margin: 0 0 24px;
+    box-shadow: -6px 3px 4px 4px;
 `;
