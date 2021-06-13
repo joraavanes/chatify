@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const { v4 } = require('uuid');
-const { addUser, removeUser, getUser, getCurrentUsersInRoom } = require('./helpers/user');
+const { addUser, removeUser, getUser, getCurrentUsersInRoom, getOtherRooms } = require('./helpers/user');
 
 const app = require('express')();
 const httpServer = require('http').createServer(app);
@@ -28,6 +28,11 @@ io.on('connection', socket => {
         const roomData = getCurrentUsersInRoom(room);
         socket.emit('roomData', roomData);
         socket.broadcast.to(room).emit('roomData', roomData);
+
+        io.sockets.emit('checkRooms');
+
+        // io.sockets.emit('otherRooms', otherRooms);
+        // socket.broadcast.emmit('otherRooms', otherRooms);
     });
 
     socket.on('userMessage', ({message}, callback) => {
@@ -40,6 +45,12 @@ io.on('connection', socket => {
         callback(undefined, 'Delivered');
     });
 
+    socket.on('otherRooms', () => {
+        const user = getUser(socket.id);
+        const otherRooms = getOtherRooms(user.room);
+        socket.emit('otherRooms', otherRooms);
+    });
+
     socket.on('disconnect', reason => {
         const user = removeUser(socket.id);
         
@@ -50,6 +61,8 @@ io.on('connection', socket => {
 
         const roomData = getCurrentUsersInRoom(user.room);
         socket.broadcast.to(user.room).emit('roomData', roomData);
+
+        io.sockets.emit('checkRooms');
     });
 });
 

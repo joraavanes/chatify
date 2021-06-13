@@ -35,6 +35,12 @@ const Chat = () => {
             setRoomData(data);
         });
 
+        socket.on('checkRooms', () => socket.emit('otherRooms'));
+
+        socket.on('otherRooms', data => {
+            console.log(data);
+        });
+
         return () => {
             socket.disconnect();
             socket.off();
