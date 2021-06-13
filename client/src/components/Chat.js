@@ -15,6 +15,7 @@ const Chat = () => {
 
     const [userInfo, setUserInfo] = useState({});
     const [roomData, setRoomData] = useState({});
+    const [otherRooms, setOtherRooms] = useState([]);
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const Chat = () => {
         socket.on('checkRooms', () => socket.emit('otherRooms'));
 
         socket.on('otherRooms', data => {
-            console.log(data);
+            setOtherRooms(data);
         });
 
         return () => {
@@ -54,7 +55,7 @@ const Chat = () => {
 
     return (
         <Container height="100vh" justifyContent="space-around">
-            <Sidebar roomData={roomData}/>
+            <Sidebar roomData={roomData} otherRooms={otherRooms}/>
             <VerticalContainer width="80vw" height="100vh" overflow="hidden">
                 <Messages messages={messages}/>
                 {socket &&
