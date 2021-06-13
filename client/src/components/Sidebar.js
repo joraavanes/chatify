@@ -4,8 +4,9 @@ import RoomInfo from './styled/RoomInfo.styled';
 import UserInfo from './styled/UserInfo.styled';
 import VerticalContainer from './styled/VerticalContainer.styled'
 import QuitButton from './styled/QuitButton.styled';
+import OtherRooms from './OtherRooms';
 
-const Sidebar = ({roomData}) => {
+const Sidebar = ({roomData, otherRooms}) => {
     const history = useHistory();
 
 
@@ -30,6 +31,7 @@ const Sidebar = ({roomData}) => {
                 </UserInfo>
             ))}
             <QuitButton onClick={handleQuit}>Quit</QuitButton>
+            <OtherRooms otherRooms={otherRooms}/>
         </VerticalContainer>
     );
 }
