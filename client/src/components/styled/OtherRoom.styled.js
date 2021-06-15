@@ -8,6 +8,9 @@ export default styled.div`
     padding: 10px 8px;
     text-indent: 8px;
     transition: all ease-out .7s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover{
         background-color: #fd72b4;

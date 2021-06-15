@@ -7,4 +7,7 @@ export default styled.div`
     text-indent: .5em;
     color: #fff;
     margin: 4px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
