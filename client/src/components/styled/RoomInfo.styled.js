@@ -13,4 +13,5 @@ export default styled.div`
     padding: 0 0 4px;
     margin: 0 0 24px;
     box-shadow: -6px 3px 4px 4px;
+    text-align: center;
 `;
