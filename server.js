@@ -21,13 +21,15 @@ io.on('connection', socket => {
         addUser({id: socket.id, name, room});
 
         const messageId = v4();
+        room = room.toLowerCase().replace(' ', '-');
+
         socket.emit('message', {messageId, name: 'admin', message: `Welcome ${name}`});
         socket.broadcast.to(room).emit('message', {messageId, name: 'admin', message: `A new friend has joined, Welcome ${name}`});
-        socket.join(room.toLowerCase().replace(' ','-'));
+        socket.join(room);
 
-        const roomData = getCurrentUsersInRoom(room.toLowerCase().replace(' ','-'));
+        const roomData = getCurrentUsersInRoom(room);
         socket.emit('roomData', roomData);
-        socket.broadcast.to(room.toLowerCase().replace(' ','-')).emit('roomData', roomData);
+        socket.broadcast.to(room).emit('roomData', roomData);
 
         io.sockets.emit('checkRooms');
 
