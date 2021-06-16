@@ -23,8 +23,8 @@ io.on('connection', socket => {
         const messageId = v4();
         room = room.toLowerCase().replace(' ', '-');
 
-        socket.emit('message', {messageId, name: 'admin', message: `Welcome ${name}`});
-        socket.broadcast.to(room).emit('message', {messageId, name: 'admin', message: `A new friend has joined, Welcome ${name}`});
+        socket.emit('message', {messageId, name: 'admin', message: `Welcome ${name}`, date: new Date().valueOf() });
+        socket.broadcast.to(room).emit('message', {messageId, name: 'admin', message: `A new friend has joined, Welcome ${name}`, date: new Date().valueOf() });
         socket.join(room);
 
         const roomData = getCurrentUsersInRoom(room);
@@ -41,8 +41,8 @@ io.on('connection', socket => {
         const {name, room} = getUser(socket.id);
 
         const messageId = v4();
-        socket.emit('message', {messageId, name, message, currentUser: true});
-        socket.broadcast.to(room).emit('message', {messageId, name, message});
+        socket.emit('message', {messageId, name, message, currentUser: true, date: new Date().valueOf() });
+        socket.broadcast.to(room).emit('message', {messageId, name, message, date: new Date().valueOf() });
 
         callback(undefined, 'Delivered');
     });
@@ -59,7 +59,7 @@ io.on('connection', socket => {
         if(!user) return;
 
         const messageId = v4();
-        socket.broadcast.to(user.room).emit('message', {messageId, name: 'admin', message: `${user.name} has left the room`});
+        socket.broadcast.to(user.room).emit('message', {messageId, name: 'admin', message: `${user.name} has left the room`, date: new Date().valueOf() });
 
         const roomData = getCurrentUsersInRoom(user.room);
         socket.broadcast.to(user.room).emit('roomData', roomData);
