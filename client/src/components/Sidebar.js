@@ -20,7 +20,7 @@ const Sidebar = ({roomData, otherRooms}) => {
     const handleQuit = e => history.push('/');
 
     return (
-        <VerticalContainer width="20vw" height="100vh" justifyContent="flex-start" backgroundColor="#8f91f5" boxShadow="10px 0 30px -9px #ccc">
+        <VerticalContainer width="20vw" height="100vh" justifyContent="flex-start" backgroundColor="#8f91f5" boxShadow="10px 0 30px -9px #ccc" mobileWidth="12vw">
             <RoomInfo>
                 <h2 style={{padding: '4px 0', margin: 0}}>{roomData.room}</h2>
                 <span>{roomData.users && roomData.users.length} people</span>

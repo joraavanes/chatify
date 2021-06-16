@@ -12,4 +12,9 @@ export default styled.div`
     overflow: ${props => props.overflow};
     overflow-y: ${props => props.overflowY};
     box-shadow: ${props => props.boxShadow};
+    transition: all ease-out .5s;
+
+    @media (max-width: 767px){
+        width: ${props => props.mobileWidth};
+    }
 `;
