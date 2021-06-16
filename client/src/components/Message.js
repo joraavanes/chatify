@@ -1,6 +1,7 @@
 import React from 'react'
 import TextBubbleStyled from './styled/TextBubble.styled'
 import Container from './styled/Container.styled'
+import MessageDate from './styled/MessageDate.styled'
 
 const Message = ({data}) => {
     return (
@@ -9,6 +10,7 @@ const Message = ({data}) => {
             <TextBubbleStyled backgroundColor={data.currentUser}>
                 {data.message}
             </TextBubbleStyled>
+            <MessageDate>{new Date(data.date).toLocaleString()}</MessageDate>
         </Container>
     )
 }
