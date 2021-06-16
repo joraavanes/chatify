@@ -11,4 +11,23 @@ export default styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     min-height: 21px;
+
+    .desktop{display: inline;}
+    .mobile{display: none;}
+
+    @media (max-width: 767px){
+        text-indent: 0;
+        max-width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .desktop{
+            display: none;
+        }
+        .mobile{
+            display: inline;
+            font-size: 18px;
+        }
+    }
 `;

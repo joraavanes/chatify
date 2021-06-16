@@ -27,7 +27,8 @@ const Sidebar = ({roomData, otherRooms}) => {
             </RoomInfo>
             {roomData.users && roomData.users.map(user => (
                 <UserInfo key={user.id}>
-                    <span>{user.name}</span>
+                    <span className="desktop">{user.name}</span>
+                    <span className="mobile">{user.name.substr(0, 1).toUpperCase()}</span>
                 </UserInfo>
             ))}
             <QuitButton onClick={handleQuit}>Quit</QuitButton>
