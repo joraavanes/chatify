@@ -49,7 +49,7 @@ io.on('connection', socket => {
 
     socket.on('otherRooms', () => {
         const user = getUser(socket.id);
-        const otherRooms = getOtherRooms(user.room);
+        const otherRooms = getOtherRooms(user?.room);
         socket.emit('otherRooms', otherRooms);
     });
 
