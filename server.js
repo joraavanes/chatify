@@ -38,11 +38,13 @@ io.on('connection', socket => {
     });
 
     socket.on('userMessage', ({message}, callback) => {
-        const {name, room} = getUser(socket.id);
+        const user = getUser(socket.id);
+
+        if(!user) return;
 
         const messageId = v4();
-        socket.emit('message', {messageId, name, message, currentUser: true, date: new Date().valueOf() });
-        socket.broadcast.to(room).emit('message', {messageId, name, message, date: new Date().valueOf() });
+        socket.emit('message', {messageId, name: user.name, message, currentUser: true, date: new Date().valueOf() });
+        socket.broadcast.to(user.room).emit('message', {messageId, name: user.name, message, date: new Date().valueOf() });
 
         callback(undefined, 'Delivered');
     });
