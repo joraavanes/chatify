@@ -28,20 +28,17 @@ const Join = () => {
             <Container justifyContent="center">
                 <form onSubmit={handleFormSubmit}>
                     <FormBox width="25vw">
-                        <h2>
+                        <h2 style={{color: '#fff'}}>
                             Join a chat room
                         </h2>
-                        <Container justifyContent="space-around" alignItems="center">
-                            <label htmlFor="name">Name</label>
-                            {/* <input type="text" name="name" id="name" onChange={e => setName(e.target.value)}/> */}
+                        <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
+                            <label htmlFor="name" style={{color: '#fff'}}>Name</label>
                             <JoinInput name="name" id="name" autoComplete="off" onChange={e => setName(e.target.value)}/>
                         </Container>
-                        <Container justifyContent="space-around" alignItems="center">
-                            <label htmlFor="room">Room</label>
-                            {/* <input type="text" name="room" id="room" onChange={e => setRoom(e.target.value)}/> */}
+                        <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
+                            <label htmlFor="room" style={{color: '#fff'}}>Room</label>
                             <JoinInput name="room" id="room" autoComplete="off" onChange={e => setRoom(e.target.value)}/>
                         </Container>
-                        {/* <button type="submit">Submit</button> */}
                         <JoinButton>Join</JoinButton>
                     </FormBox>
                 </form>
