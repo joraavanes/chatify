@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const { v4 } = require('uuid');
-const { addUser, removeUser, getUser, getCurrentUsersInRoom, getOtherRooms } = require('./helpers/user');
+const { addUser, removeUser, getUser, getCurrentUsersInRoom, getOtherRooms, getAllRooms } = require('./helpers/user');
 
 const app = require('express')();
 const httpServer = require('http').createServer(app);
@@ -53,6 +53,10 @@ io.on('connection', socket => {
         const user = getUser(socket.id);
         const otherRooms = getOtherRooms(user?.room);
         socket.emit('otherRooms', otherRooms);
+    });
+
+    socket.on('allRooms', () => {
+        socket.emit('allRooms', getAllRooms());
     });
 
     socket.on('disconnect', reason => {

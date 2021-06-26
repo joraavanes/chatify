@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Container from './styled/Container.styled'
 import VerticalContainer from './styled/VerticalContainer.styled'
@@ -6,6 +6,9 @@ import H1 from './styled/h1.styled'
 import FormBox from './styled/FormBox.styled'
 import JoinInput from './styled/JoinInput.styled'
 import JoinButton from './styled/JoinButton.styled'
+import SocketIO from 'socket.io-client'
+
+let socket;
 
 const Join = () => {
     const history = useHistory();
@@ -19,6 +22,21 @@ const Join = () => {
         if(name && room)
             history.push(`/chat?name=${name}&room=${room}`);
     };
+
+    useEffect(() => {
+        socket = SocketIO();
+
+        socket.emit('allRooms');
+
+        socket.on('allRooms', data => {
+            console.log(data);
+        });
+
+        return () => {
+
+        };
+    }, []);
+
 
     return (
         <div>
