@@ -38,10 +38,17 @@ const getOtherRooms = currentRoom => {
     return uniqueRooms.filter(room => room !== currentRoom);
 };
 
+const getAllRooms = () => {
+    const rooms = users.map(user => user.room);
+    const uniqueRooms = new Set([...rooms]);
+    return Array.from(uniqueRooms);
+};
+
 module.exports = {
     addUser,
     removeUser,
     getCurrentUsersInRoom,
     getUser,
-    getOtherRooms
+    getOtherRooms,
+    getAllRooms
 };
