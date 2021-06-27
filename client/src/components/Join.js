@@ -15,6 +15,7 @@ const Join = () => {
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [liveRooms, setLiveRooms] = useState([]);
 
     const handleFormSubmit = e => {
         e.preventDefault();
@@ -27,9 +28,13 @@ const Join = () => {
         socket = SocketIO();
 
         socket.emit('allRooms');
+        
+        socket.on('checkRooms', () => {
+            socket.emit('allRooms');
+        });
 
         socket.on('allRooms', data => {
-            console.log(data);
+            setLiveRooms(data);
         });
 
         return () => {
@@ -56,6 +61,14 @@ const Join = () => {
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="room" style={{color: '#fff'}}>Room</label>
                             <JoinInput name="room" id="room" autoComplete="off" onChange={e => setRoom(e.target.value)}/>
+                        </Container>
+                        <Container>
+                            <p>Choose from live rooms</p>
+                            <ul>
+                                {liveRooms.map(room => (
+                                    <li key={room}>{room}</li>
+                                ))}
+                            </ul>
                         </Container>
                         <JoinButton>Join</JoinButton>
                     </FormBox>
