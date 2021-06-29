@@ -8,6 +8,7 @@ export default styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
     border-top: ${props => props.borderTop};
+    border-radius: ${props => props.borderRadius};
     padding: ${props => props.padding};
     background-color: ${props => props.backgroundColor ? props.backgroundColor : '#fff'};
 `;
