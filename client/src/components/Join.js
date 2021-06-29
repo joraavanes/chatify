@@ -7,6 +7,7 @@ import FormBox from './styled/FormBox.styled'
 import JoinInput from './styled/JoinInput.styled'
 import JoinButton from './styled/JoinButton.styled'
 import SocketIO from 'socket.io-client'
+import LiveRooms from './LiveRooms'
 
 let socket;
 
@@ -52,7 +53,7 @@ const Join = () => {
                 <form onSubmit={handleFormSubmit}>
                     <FormBox width="25vw">
                         <h2 style={{color: '#fff'}}>
-                            Join a chat room
+                            Create a chat room
                         </h2>
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="name" style={{color: '#fff'}}>Name</label>
@@ -62,14 +63,9 @@ const Join = () => {
                             <label htmlFor="room" style={{color: '#fff'}}>Room</label>
                             <JoinInput name="room" id="room" autoComplete="off" onChange={e => setRoom(e.target.value)}/>
                         </Container>
-                        <Container>
-                            <p>Choose from live rooms</p>
-                            <ul>
-                                {liveRooms.map(room => (
-                                    <li key={room}>{room}</li>
-                                ))}
-                            </ul>
-                        </Container>
+                        <VerticalContainer backgroundColor="#8f91f5" justifyContent="flex-start" height="auto">
+                            <LiveRooms liveRooms={liveRooms}/>
+                        </VerticalContainer>
                         <JoinButton>Join</JoinButton>
                     </FormBox>
                 </form>
