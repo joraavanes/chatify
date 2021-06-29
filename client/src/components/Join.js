@@ -39,7 +39,8 @@ const Join = () => {
         });
 
         return () => {
-
+            socket.disconnect();
+            socket.off();
         };
     }, []);
 
