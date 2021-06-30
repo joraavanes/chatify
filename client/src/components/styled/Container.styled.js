@@ -7,6 +7,7 @@ export default styled.div`
     align-items: ${props => props.alignItems};
     width: ${props => props.width};
     height: ${props => props.height};
+    min-height: ${props => props.minHeight};
     border-top: ${props => props.borderTop};
     border-radius: ${props => props.borderRadius};
     padding: ${props => props.padding};
