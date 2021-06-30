@@ -9,7 +9,7 @@ const LiveRooms = ({liveRooms}) => {
     return (
         <>
             <H3 color="#fff">Or choose from live rooms</H3>
-            <Container borderRadius="25px" backgroundColor="#fff">
+            <Container borderRadius="25px" backgroundColor="#fff" minHeight="100px">
                 <LiveRoomsListStyled>
                     {liveRooms.length == 0 && <NoRoomMessageStyled>* Currently, there are no live rooms</NoRoomMessageStyled>}
                     {liveRooms.map(room => (
