@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import Container from './styled/Container.styled'
 import VerticalContainer from './styled/VerticalContainer.styled'
 import H1 from './styled/h1.styled'
@@ -13,6 +14,7 @@ let socket;
 
 const Join = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
@@ -36,6 +38,10 @@ const Join = () => {
 
         socket.on('allRooms', data => {
             setLiveRooms(data);
+            dispatch({
+                type: 'room/allRooms',
+                rooms: data
+            });
         });
 
         return () => {
