@@ -12,6 +12,7 @@
   "scripts": {
     "server": "nodemon server.js",
     "webpack": "npm run webpack:dev --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run webpack\""
+    "browser": "start http://localhost:5000",
+    "dev": "concurrently \"npm run server\" \"npm run webpack\" \"npm run browser\""
   }
 }
