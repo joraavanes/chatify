@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Container from './styled/Container.styled'
 import VerticalContainer from './styled/VerticalContainer.styled'
 import H1 from './styled/h1.styled'
@@ -19,9 +19,15 @@ const Join = () => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [liveRooms, setLiveRooms] = useState([]);
+    const selectedRoom = useSelector(state => state.room.selectedRoom);
 
     const handleFormSubmit = e => {
         e.preventDefault();
+
+        dispatch({
+            type: 'room/selectRoom',
+            selectedRoom: undefined
+        });
 
         if(name && room)
             history.push(`/chat?name=${name}&room=${room}`);
@@ -50,6 +56,9 @@ const Join = () => {
         };
     }, []);
 
+    useEffect(() => {
+        setRoom(selectedRoom);
+    }, [selectedRoom]);
 
     return (
         <div>
@@ -64,11 +73,11 @@ const Join = () => {
                         </h2>
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="name" style={{color: '#fff'}}>Name</label>
-                            <JoinInput name="name" id="name" autoComplete="off" onChange={e => setName(e.target.value)}/>
+                            <JoinInput name="name" id="name" autoComplete="off" defaultValue={name} onChange={e => setName(e.target.value)}/>
                         </Container>
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="room" style={{color: '#fff'}}>Room</label>
-                            <JoinInput name="room" id="room" autoComplete="off" onChange={e => setRoom(e.target.value)}/>
+                            <JoinInput name="room" id="room" autoComplete="off" defaultValue={room} onChange={e => setRoom(e.target.value)}/>
                         </Container>
                         <VerticalContainer backgroundColor="#8f91f5" justifyContent="flex-start" height="auto">
                             <LiveRooms liveRooms={liveRooms}/>
