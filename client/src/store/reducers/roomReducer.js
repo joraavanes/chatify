@@ -1,7 +1,8 @@
 
 const defaultState = {
     rooms: [],
-    currentRoom: undefined
+    currentRoom: undefined,
+    selectedRoom: undefined
 };
 
 export default function roomReducer(state = defaultState, action){
@@ -12,6 +13,11 @@ export default function roomReducer(state = defaultState, action){
                 rooms: action.rooms
             };
             break;
+        case 'room/selectRoom':
+            return {
+                ...state,
+                selectedRoom: action.selectedRoom
+            };
         default:
             return state;
             break;
