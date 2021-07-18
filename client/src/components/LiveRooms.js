@@ -14,7 +14,7 @@ const LiveRooms = ({}) => {
             <H3 color="#fff">Or choose from live rooms</H3>
             <Container borderRadius="25px" backgroundColor="#fff" minHeight="100px">
                 <LiveRoomsListStyled>
-                    {liveRooms.length == 0 && <NoRoomMessageStyled>* Currently, there are no live rooms</NoRoomMessageStyled>}
+                    {liveRooms.length == 0 && <NoRoomMessageStyled>* Currently, no live rooms available</NoRoomMessageStyled>}
                     {liveRooms.map(room => <LiveRoom key={room} room={room}/>)}
                 </LiveRoomsListStyled>
             </Container>
