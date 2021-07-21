@@ -73,11 +73,11 @@ const Join = () => {
                         </h2>
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="name" style={{color: '#fff'}}>Name</label>
-                            <JoinInput name="name" id="name" autoComplete="off" defaultValue={name} onChange={e => setName(e.target.value)}/>
+                            <JoinInput name="name" id="name" autoComplete="off" defaultValue={name} onChange={e => setName(e.target.value)} tabIndex={1}/>
                         </Container>
                         <Container justifyContent="space-around" alignItems="center" backgroundColor="#8f91f5">
                             <label htmlFor="room" style={{color: '#fff'}}>Room</label>
-                            <JoinInput name="room" id="room" autoComplete="off" defaultValue={room} onChange={e => setRoom(e.target.value)}/>
+                            <JoinInput name="room" id="room" autoComplete="off" defaultValue={room} onChange={e => setRoom(e.target.value)} tabIndex={2}/>
                         </Container>
                         <VerticalContainer backgroundColor="#8f91f5" justifyContent="flex-start" height="auto">
                             <LiveRooms liveRooms={liveRooms}/>

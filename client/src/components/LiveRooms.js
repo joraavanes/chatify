@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Container from './styled/Container.styled'
 import H3 from './styled/h3.styled'
@@ -15,7 +15,7 @@ const LiveRooms = ({}) => {
             <Container borderRadius="25px" backgroundColor="#fff" minHeight="100px">
                 <LiveRoomsListStyled>
                     {liveRooms.length == 0 && <NoRoomMessageStyled>* Currently, no live rooms available</NoRoomMessageStyled>}
-                    {liveRooms.map(room => <LiveRoom key={room} room={room}/>)}
+                    {liveRooms.map((room, i) => <LiveRoom key={room} room={room} tabIndex={i + 3}/>)}
                 </LiveRoomsListStyled>
             </Container>
         </>

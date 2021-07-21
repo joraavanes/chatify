@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export default styled.li`
+export default styled.li.attrs(props => ({
+    tabIndex: props.tabIndex
+}))`
     border-radius: 25px;
     border: #ccc dashed 4px;
     display: inline-block;
@@ -8,7 +10,8 @@ export default styled.li`
     margin: 5px;
     transition: all ease-in-out .4s;
 
-    &:hover{
+    &:hover, &:focus-visible{
+        outline: none;
         background-color: #f38abc;
         border: #f38abc solid 4px;
         color: #fff;

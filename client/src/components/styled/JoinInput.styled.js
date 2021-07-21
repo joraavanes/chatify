@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
-export default styled.input.attrs({
-    type: 'text'
-})`
+export default styled.input.attrs(props => ({
+    type: 'text',
+    tabIndex: props.tabIndex
+}))`
     margin: 10px 5px;
     border: 1px solid #eaeaea;
     padding: 5px;
